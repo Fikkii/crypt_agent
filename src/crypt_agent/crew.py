@@ -48,6 +48,7 @@ class CryptAgent():
         return Agent(
             config=self.agents_config['researcher'], # type: ignore[index]
             tools=[search_tool, fetch_ticker_price, get_latest_klines], # type: ignore[list-item]
+            llm="gemini/gemini-2.0-flash",
             verbose=True
         )
 
@@ -56,6 +57,7 @@ class CryptAgent():
         return Agent(
             config=self.agents_config['analyst'], # type: ignore[index]
             verbose=True,
+            llm="gemini/gemini-2.0-flash",
             tools=[calculate_technical_indicators, math_tool] # type: ignore[list-item]
         )
 
@@ -64,6 +66,7 @@ class CryptAgent():
         return Agent(
             config=self.agents_config['strategist'], # type: ignore[index]
             tools=[fetch_ticker_price, check_wallet_balance],
+            llm="gemini/gemini-2.0-flash",
             verbose=True
         )
 
@@ -72,6 +75,7 @@ class CryptAgent():
         return Agent(
             config=self.agents_config['trader'], # type: ignore[index]
             tools=[place_market_order, execute_multiple_orders, advanced_sliced_executor],
+            llm="gemini/gemini-2.0-flash",
             verbose=True
         )
 
@@ -79,6 +83,7 @@ class CryptAgent():
     def reporter(self) -> Agent:
         return Agent(
             config=self.agents_config['reporter'], # type: ignore[index]
+            llm="gemini/gemini-2.0-flash",
             verbose=True
         )
 
