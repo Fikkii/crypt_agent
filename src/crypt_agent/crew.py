@@ -11,8 +11,6 @@ class TradeOrder(BaseModel):
     symbol: str    # e.g., "BTCUSDT"
     side: str      # "Buy" or "Sell"
     quantity: float
-    take_profit: float
-    stop_loss: float
 
 class TradeSignal(BaseModel):
     orders: List[TradeOrder]
@@ -48,7 +46,7 @@ class CryptAgent():
         return Agent(
             config=self.agents_config['researcher'], # type: ignore[index]
             tools=[search_tool, fetch_ticker_price, get_latest_klines], # type: ignore[list-item]
-            llm="gemini/gemini-2.0-flash",
+            llm="gemini/gemini-2.0-pro",
             verbose=True
         )
 

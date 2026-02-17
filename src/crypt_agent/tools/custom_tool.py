@@ -135,46 +135,16 @@ def execute_multiple_orders(orders: List[dict]):
             - symbol (string): e.g., "BTCUSDT"
             - side (string): "Buy" or "Sell"
             - quantity (string): Order quantity
-             - category (string): "linear" or "spot" (optional, defaults to "linear")
     """
     results = []
     for order in orders:
         try:
-            # 1. Get the current price directly from Bybit for accuracy
-            ticker = session.get_tickers(category="linear", symbol=order['symbol'])
-            entry_price = float(ticker['result']['list'][0]['lastPrice'])
-
-            leverage = 1
-
-            tp_roi = 2  # Targeting 20% ROI for take profit
-            sl_roi = 1  # Targeting 20% ROI for take profit
-            
-
-            # 2. Convert ROI % to decimal (e.g., 20% -> 0.20)
-            tp_decimal = tp_roi / 100
-            sl_decimal = sl_roi / 100
-
-            # 3. Calculate the price movement required based on leverage
-            if order['side'].lower() == "buy":
-                tp_price = entry_price * (1 + (tp_decimal / leverage))
-                sl_price = entry_price * (1 - (sl_decimal / leverage))
-            else:
-                tp_price = entry_price * (1 - (tp_decimal / leverage))
-                sl_price = entry_price * (1 + (sl_decimal / leverage))
-
-            # The agent can now pull specific fields from each object in the array
             response = session.place_order(
-                category=order['category'],
+                category="linear",
                 symbol=order['symbol'],
                 side=order['side'],
                 orderType="Market",
                 qty=order['quantity'],
-                takeProfit=tp_price,
-                stopLoss=sl_price,
-                tpTriggerBy="MarkPrice", # Protects against 'scam wicks'
-                slTriggerBy="MarkPrice",
-                tpslMode="Full",
-                timeInForce="GTC"
             )
             results.append(f"Success: {order['symbol']} OrderID: {response['result']['orderId']}")
         except Exception as e:

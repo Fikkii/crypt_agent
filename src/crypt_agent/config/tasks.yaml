@@ -14,9 +14,9 @@ analysis_task:
 
 strategist_task:
   description: >
-    Determine the buy or sell condition using the information provided from the analysis and also ascertain the amount to buy or sell to maximize profit as much as possible due to the confidence rate of the calculation, determine the stop loss to 1% and use a take profit of 2%
+    Determine the buy or sell condition using the information provided from the analysis and also ascertain the amount to buy or sell to maximize profit as much as possible due to the confidence rate of the calculation.
   expected_output: >
-    Execution report with Bybit Order IDs for each trade in markdown format.
+    A list of trade orders with the coin, amount, buy or sell condition.
   agent: strategist
 
 trade_task:
