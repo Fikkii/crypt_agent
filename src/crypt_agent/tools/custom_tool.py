@@ -2,12 +2,9 @@ import os
 import time
 from crewai.tools import tool
 from pybit.unified_trading import HTTP
-from dotenv import load_dotenv
 import pandas as pd
 
 from typing import List
-
-load_dotenv()
 
 # Securely initialize session
 session = HTTP(
