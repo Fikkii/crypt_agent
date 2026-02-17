@@ -31,3 +31,4 @@ report_task:
     Provide a clear and concise report of the executed trades in a markdown format with the Bybit Order IDs for each trade. The report should include the coins that were traded, the amount that was traded, the price at which the trade was executed, the stop loss and take profit levels that were set for the trade, and the Bybit Order IDs for each trade.
   expected_output: >
     A markdown report summarizing the executed trades with all necessary details.
+  agent: reporter

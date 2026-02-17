@@ -97,9 +97,9 @@ class CryptAgent():
     @task
     def strategist_task(self) -> Task:
         return Task(
-            config=self.tasks_config['strategist_taskj'], # type: ignore[index]
+            config=self.tasks_config['strategist_task'], # type: ignore[index]
             output_pydantic=TradeSignal,
-            output_file='trade_signal.json'
+            output_file='output/trade_signal.json'
         )
 
     @task
@@ -112,7 +112,7 @@ class CryptAgent():
     def report_task(self) -> Task:
         return Task(
             config=self.tasks_config['report_task'], # type: ignore[index]
-            output_file='trade_report.md'
+            output_file='output/trade_report.md'
         )
 
     @crew
