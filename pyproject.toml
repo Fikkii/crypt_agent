@@ -1,0 +1,24 @@
+[project]
+name = "crypt_agent"
+version = "0.1.0"
+description = "crypt_agent using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai[tools]==1.6.1"
+]
+
+[project.scripts]
+crypt_agent = "crypt_agent.main:run"
+run_crew = "crypt_agent.main:run"
+train = "crypt_agent.main:train"
+replay = "crypt_agent.main:replay"
+test = "crypt_agent.main:test"
+run_with_trigger = "crypt_agent.main:run_with_trigger"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"
